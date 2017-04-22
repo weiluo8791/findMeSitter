@@ -1,5 +1,6 @@
 package user.review
 
+import daycare.provider.DayCareCenter
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
@@ -15,8 +16,17 @@ class ReviewCommentSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void "test validation of nullable objects"() {
+        when:
+        ReviewComment RC = new ReviewComment()
+        then:
+        !RC.validate()
+
+        when:
+        Review R1= new Review()
+        RC =new ReviewComment(comment: 'Thank you for the review',commentDate:  new Date(),published: false,review: R1)
+        then:
+        RC.validate()
     }
+
 }
