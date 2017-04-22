@@ -9,9 +9,12 @@ class Picture {
 
     static belongsTo = [center:DayCareCenter]
     static transients = ['imageBase64']
-    static mappings = {
+    static mapping = {
         image type: "blob"
     }
     static constraints = {
+        pictureDescription nullable: true
+        image nullable: true
+        imageUrl  nullable: true
     }
 }
