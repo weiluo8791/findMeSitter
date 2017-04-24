@@ -30,6 +30,7 @@ class ReviewSpec extends Specification {
         R1.validate()
     }
 
+    //test start range
     void "test stars range" () {
         when:
         Review R1 =new Review( reviewTitle: 'Best day care',reviewDetail: 'I love this place',
