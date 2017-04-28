@@ -1,3 +1,3 @@
 rootProject.name = 'findMeSitter'
 include 'userdetail'
-project(':userdetail').projectDir = new File('F:/Google Drive/Personal/School/Harvard/IdeaProjects/CSCI E-56/userdetail')
+project(':userdetail').projectDir = new File('../userdetail')
