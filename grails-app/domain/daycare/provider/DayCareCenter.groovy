@@ -1,5 +1,7 @@
 package daycare.provider
 
+import user.review.Review
+
 class DayCareCenter {
     String name
     String address
@@ -12,7 +14,10 @@ class DayCareCenter {
     Integer centerCapcity
     BigDecimal dailyRate
 
-    static hasMany = [features:Feature, pictures:Picture,calendars:Calendar]
+    static hasMany = [features:Feature,
+                                pictures:Picture,
+                                calendars:Calendar,
+                                reviews:Review]
 
     static constraints = {
         email nullable: true
