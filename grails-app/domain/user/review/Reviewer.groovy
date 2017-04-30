@@ -5,7 +5,6 @@ import findMeSitter.user.*
 class Reviewer {
     Date dateOfFirstReview
     Date dateOfLatestReview
-
     User userDetail
 
     Integer getTotalReviewCount() {
