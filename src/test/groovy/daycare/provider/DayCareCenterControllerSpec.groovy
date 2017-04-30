@@ -9,10 +9,8 @@ class DayCareCenterControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
-        assert false, "TODO: Provide a populateValidParams() implementation for this generated test suite"
+        params << [ name: 'Luo Family Day Care',address: '123 Main st',city: 'Malden',state: 'MA',zip: '02148',
+                email: 'iqboss@mymail.com',phoneNumber: '123-456-7890',otherDetail:'None',centerCapcity: '8',dailyRate: 55.00]
     }
 
     void "Test the index action returns the correct model"() {

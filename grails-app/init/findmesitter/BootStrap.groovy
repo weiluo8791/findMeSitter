@@ -62,6 +62,13 @@ class BootStrap {
         DayCareCenter dc1 = new DayCareCenter(name: 'Luo Family Day Care',address: '123 Main st',city: 'Malden',state: 'MA',zip: '02148',
                 email: 'iqboss@mymail.com',phoneNumber: '123-456-7890',otherDetail:'None',centerCapcity: '8',dailyRate: 55.00)
         saveObject(dc1)
+        //load Day Center component
+        Calendar ca1 = new Calendar(calendarYear: 2016,hours: 'M-F 7-6',center: dc1)
+        saveObject(ca1)
+        Feature fe1 = new Feature(featureName: 'Licensed',featureDescription: 'We are Mass Licensed',featureType: 'external',center: dc1)
+        saveObject(fe1)
+        Picture pi1 = new Picture(pictureName: 'front door',pictureDescription: 'This is our main entry',imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/White_House_DC.JPG',center: dc1)
+        saveObject(pi1)
         //load reviewer
         Reviewer re1 = new Reviewer(dateOfFirstReview: new Date() - 10 , dateOfLatestReview: new Date(),userDetail: user1)
         saveObject(re1)

@@ -1,5 +1,6 @@
 package user.review
 
+import findMeSitter.user.User
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
@@ -17,48 +18,56 @@ class ReviewerSpec extends Specification {
 
     void "test validation of nullable objects"() {
         when:
-        Reviewer RE = new Reviewer()
+        User user1 = new User()
+        Reviewer RE = new Reviewer(userDetail: user1)
         then:
         !RE.validate()
 
         when:
-        RE= new Reviewer(firstName: 'Wei',lastName: 'Luo')
+        user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas' )
+        RE= new Reviewer(dateOfFirstReview: new Date() - 20 , dateOfLatestReview: new Date() - 2,userDetail: user1)
         then:
         RE.validate()
     }
 
     void "test gender inList"() {
         when:
-        Reviewer RE= new Reviewer(firstName: 'Wei',lastName: 'Luo',gender: 'X')
+        User user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas',gender: 'X' )
+        Reviewer RE= new Reviewer(dateOfFirstReview: new Date() - 20 , dateOfLatestReview: new Date() - 2,userDetail: user1)
         then:
         !RE.validate()
 
         when:
-        RE= new Reviewer(firstName: 'Wei',lastName: 'Luo',gender: 'M')
+        user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas',gender: 'M' )
+        RE= new Reviewer(dateOfFirstReview: new Date() - 20 , dateOfLatestReview: new Date() - 2,userDetail: user1)
         then:
         RE.validate()
     }
 
     void "test state inList"() {
         when:
-        Reviewer RE= new Reviewer(firstName: 'Wei',lastName: 'Luo',state: 'XX')
+        User user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas',state: 'XX' )
+        Reviewer RE= new Reviewer(dateOfFirstReview: new Date() - 20 , dateOfLatestReview: new Date() - 2,userDetail: user1)
         then:
         !RE.validate()
 
         when:
-        RE= new Reviewer(firstName: 'Wei',lastName: 'Luo',state: 'MA')
+        user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas',state: 'MA' )
+        RE= new Reviewer(dateOfFirstReview: new Date() - 20 , dateOfLatestReview: new Date() - 2,userDetail: user1)
         then:
         RE.validate()
     }
 
     void "first before or equal latest date"() {
         when:
-        Reviewer RE= new Reviewer(firstName: 'Wei',lastName: 'Luo',dateOfFirstReview: new Date() + 5, dateOfLatestReview: new Date()+4)
+        User user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas' )
+        Reviewer RE= new Reviewer(dateOfFirstReview: new Date() + 5, dateOfLatestReview: new Date()+4,userDetail: user1)
         then:
         !RE.validate()
 
         when:
-        RE= new Reviewer(firstName: 'Wei',lastName: 'Luo',dateOfFirstReview: new Date() + 4, dateOfLatestReview: new Date()+5)
+        user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas' )
+        RE= new Reviewer(dateOfFirstReview: new Date() + 4, dateOfLatestReview: new Date()+5,userDetail: user1)
         then:
         RE.validate()
     }

@@ -1,17 +1,17 @@
-package user.review
+package daycare.provider
 
-import findMeSitter.user.User
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(ReviewerController)
-@Mock(Reviewer)
-class ReviewerControllerSpec extends Specification {
+@TestFor(PictureController)
+@Mock(Picture)
+class PictureControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        User user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas' )
-        params << [dateOfFirstReview: new Date() - 10 , dateOfLatestReview: new Date(),userDetail: user1]
+        DayCareCenter dc1 = new DayCareCenter(name: 'Luo Family Day Care',address: '123 Main st',city: 'Malden',state: 'MA',zip: '02148',
+                email: 'iqboss@mymail.com',phoneNumber: '123-456-7890',otherDetail:'None',centerCapcity: '8',dailyRate: 55.00)
+        params << [pictureName: 'front door',pictureDescription: 'This is our main entry',imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/White_House_DC.JPG',center: dc1]
     }
 
     void "Test the index action returns the correct model"() {
@@ -20,8 +20,8 @@ class ReviewerControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.reviewerList
-            model.reviewerCount == 0
+            !model.pictureList
+            model.pictureCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -29,7 +29,7 @@ class ReviewerControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.reviewer!= null
+            model.picture!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -37,26 +37,25 @@ class ReviewerControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            User user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas',gender: 'M',state: 'MA')
-            def reviewer = new Reviewer(userDetail: user1)
-            reviewer.validate()
-            controller.save(reviewer)
+            def picture = new Picture()
+            picture.validate()
+            controller.save(picture)
 
         then:"The create view is rendered again with the correct model"
-            model.reviewer!= null
+            model.picture!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            reviewer = new Reviewer(params)
+            picture = new Picture(params)
 
-            controller.save(reviewer)
+            controller.save(picture)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/reviewer/show/1'
+            response.redirectedUrl == '/picture/show/1'
             controller.flash.message != null
-            Reviewer.count() == 1
+            Picture.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,11 +67,11 @@ class ReviewerControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def reviewer = new Reviewer(params)
-            controller.show(reviewer)
+            def picture = new Picture(params)
+            controller.show(picture)
 
         then:"A model is populated containing the domain instance"
-            model.reviewer == reviewer
+            model.picture == picture
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -84,11 +83,11 @@ class ReviewerControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def reviewer = new Reviewer(params)
-            controller.edit(reviewer)
+            def picture = new Picture(params)
+            controller.edit(picture)
 
         then:"A model is populated containing the domain instance"
-            model.reviewer == reviewer
+            model.picture == picture
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -98,29 +97,28 @@ class ReviewerControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/reviewer/index'
+            response.redirectedUrl == '/picture/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas',gender: 'M',state: 'MA')
-            def reviewer = new Reviewer(userDetail: user1)
-            reviewer.validate()
-            controller.update(reviewer)
+            def picture = new Picture()
+            picture.validate()
+            controller.update(picture)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.reviewer == reviewer
+            model.picture == picture
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            reviewer = new Reviewer(params).save(flush: true)
-            controller.update(reviewer)
+            picture = new Picture(params).save(flush: true)
+            controller.update(picture)
 
         then:"A redirect is issued to the show action"
-            reviewer != null
-            response.redirectedUrl == "/reviewer/show/$reviewer.id"
+            picture != null
+            response.redirectedUrl == "/picture/show/$picture.id"
             flash.message != null
     }
 
@@ -131,23 +129,23 @@ class ReviewerControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/reviewer/index'
+            response.redirectedUrl == '/picture/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def reviewer = new Reviewer(params).save(flush: true)
+            def picture = new Picture(params).save(flush: true)
 
         then:"It exists"
-            Reviewer.count() == 1
+            Picture.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(reviewer)
+            controller.delete(picture)
 
         then:"The instance is deleted"
-            Reviewer.count() == 0
-            response.redirectedUrl == '/reviewer/index'
+            Picture.count() == 0
+            response.redirectedUrl == '/picture/index'
             flash.message != null
     }
 }

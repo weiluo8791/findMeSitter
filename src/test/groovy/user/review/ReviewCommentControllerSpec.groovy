@@ -1,5 +1,6 @@
 package user.review
 
+import daycare.provider.DayCareCenter
 import grails.test.mixin.*
 import spock.lang.*
 
@@ -9,10 +10,9 @@ class ReviewCommentControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
-        assert false, "TODO: Provide a populateValidParams() implementation for this generated test suite"
+        Review rv1 = new Review(dateOfReview: new Date() - 4 ,reviewTitle: 'I love this day care',reviewDetail: 'This is the best family day care in Malden',
+                otherDetail: 'Very clean and professional',stars: 5,recommended: true)
+        params << [comment: 'word',commentDate: new Date() - 2,published: true,review: rv1]
     }
 
     void "Test the index action returns the correct model"() {

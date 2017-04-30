@@ -58,8 +58,8 @@
         <p>
             Congratulations, This is the Day Care Application
         </p>
-        <p><%= link(controller:'dcc') { 'Day Care Center' }%></p>
-        <p><%= link(controller:'dccreviewer') { 'Reviwer' }%></p>
+        <p><g:link controller="dayCareCenter">Day Care Center</g:link></p>
+        <p><g:link controller="reviewer">Reviwer</g:link></p>
     </section>
 </div>
 
