@@ -14,7 +14,6 @@ class ReviewController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-
     SearchReviewService searchReviewService
 
     @Secured([Role.ROLE_USER,Role.ROLE_ADMIN,Role.ROLE_ANONYMOUS])

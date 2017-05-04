@@ -25,7 +25,7 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     %{--<f:table collection="${dayCareCenterList}"/>--}%
-    <g:render template="table" model="[bookList:bookList]" />
+    <g:render template="table" model="[dayCareCenterList:dayCareCenterList]" />
 
     %{--<div class="pagination">--}%
         %{--<g:paginate total="${dayCareCenterCount ?: 0}"/>--}%
