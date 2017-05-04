@@ -45,21 +45,20 @@
     </li>
 </content>
 
-<div class="svg" role="presentation">
+<div class="png" role="presentation">
     <div class="grails-logo-container">
-        <asset:image src="grails-cupsonly-logo-white.svg" class="grails-logo"/>
+        <asset:image src="family-1976162_1280.png" class="grails-logo"/>
     </div>
 </div>
 
 <div id="content" role="main">
     <section class="row colset-2-its">
-        <h1>Welcome to the No Fun League</h1>
-
-        <p>
-            Congratulations, This is the Day Care Application
-        </p>
-        <p><g:link controller="dayCareCenter">Day Care Center</g:link></p>
-        <p><g:link controller="reviewer">Reviwer</g:link></p>
+        <h1>CSCIE-56 Final Project - Day Care Application</h1>
+        <ul>
+            <li>If you are are Day Care Provider <g:link controller="dayCareCenter">Enter Here</g:link></li>
+            <li><g:link controller="reviewer">Log in as Reviewer</g:link></li>
+            <li><g:link controller="review">Search Review</g:link></li>
+        </ul>
     </section>
 </div>
 

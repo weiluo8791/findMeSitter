@@ -8,6 +8,7 @@ class Reviewer {
     User userDetail
     String  getGender() {userDetail.gender}
     String getState(){userDetail.state}
+    String getCity(){userDetail.city}
 
     Date dateCreated
     Date lastUpdated
@@ -16,7 +17,7 @@ class Reviewer {
         this.reviews.size()
     }
 
-    static transients = ['totalReviewCount','gender','state']
+    static transients = ['totalReviewCount','gender','state','city']
     static hasMany = [reviews: Review]
     static constraints = {
         dateOfLatestReview validator: { val, obj ->

@@ -14,9 +14,9 @@
                 <li>
                     <g:link controller="dayCareCenter">Day Care Center</g:link>
                 </li>
-                %{--<li>--}%
-                    %{--<g:link controller="review">Reviews</g:link>--}%
-                %{--</li>--}%
+                <li>
+                    <g:link controller="review">Reviews</g:link>
+                </li>
                 <li>
                     <g:link controller="reviewer">Reviewer</g:link>
                 </li>
