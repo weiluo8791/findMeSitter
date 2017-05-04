@@ -5,12 +5,17 @@ import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import user.review.*
+
 
 @Transactional(readOnly = true)
 @Secured([Role.ROLE_USER,Role.ROLE_ADMIN])
 class ReviewController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+
+    SearchReviewService searchReviewService
 
     @Secured([Role.ROLE_USER,Role.ROLE_ADMIN,Role.ROLE_ANONYMOUS])
     def index(Integer max) {
