@@ -1,7 +1,11 @@
 package daycare.provider
 
 import findMeSitter.user.Role
+import grails.converters.JSON
+import grails.converters.XML
 import grails.plugin.springsecurity.annotation.Secured
+
+import java.text.NumberFormat
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -16,11 +20,33 @@ class DayCareCenterController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond DayCareCenter.list(params), model:[dayCareCenterCount: DayCareCenter.count()]
+        //respond DayCareCenter.list()
     }
 
     @Secured([Role.ROLE_USER,Role.ROLE_ADMIN,Role.ROLE_ANONYMOUS])
     def show(DayCareCenter dayCareCenter) {
         respond dayCareCenter
+    }
+
+    @Secured([Role.ROLE_USER,Role.ROLE_ADMIN,Role.ROLE_ANONYMOUS])
+    def _show(DayCareCenter dayCareCenter) {
+        withFormat {
+            html { respond dayCareCenter }
+            json { render ( [
+                    id:dayCareCenter?.id
+                    ,name: dayCareCenter?.name
+                    ,address: dayCareCenter?.address
+                    ,city: dayCareCenter?.city
+                    ,state: dayCareCenter?.state
+                    ,zip: dayCareCenter?.zip
+                    ,email: dayCareCenter?.email
+                    ,phone: dayCareCenter?.phoneNumber
+                    ,capacity: dayCareCenter?.centerCapcity
+                    ,rate: NumberFormat.getCurrencyInstance().format(dayCareCenter?.dailyRate)
+                    ,other: dayCareCenter?.otherDetail
+            ]  as JSON ) }
+            xml { render (dayCareCenter as XML) }
+        }
     }
 
     def create() {

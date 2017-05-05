@@ -23,13 +23,13 @@ $(function() {
             $('#daycare-state').html(data.state);
             $('#daycare-zip').html(data.zip);
             $('#daycare-email').html(data.email);
-            $('#daycare-phone').html(data.phoneNumber);
-            $('#daycare-capacity').html(data.centerCapcity);
-            $('#daycare-rate').html('$' + data.dailyRate.toFixed(2));
-            $('#daycare-other').html(data.otherDetail);
+            $('#daycare-phone').html(data.phone);
+            $('#daycare-capacity').html(data.capacity);
+            $('#daycare-rate').html(data.rate);
+            $('#daycare-other').html(data.other);
 
             $('#daycare-delete-form').attr('action','/dayCareCenter/delete/'+data.id);
-            $('#daycare-edit-link').attr('href','/dayCareCenter/edit/'+data.id);
+                $('#daycare-edit-link').attr('href','/dayCareCenter/edit/'+data.id);
         });
         request.fail(function (jqXHR, textStatus) {
             console.log("daycareModal fail - jqXHR="+jqXHR + ", textStatus="+textStatus);

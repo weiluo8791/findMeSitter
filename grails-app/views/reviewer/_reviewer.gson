@@ -1,0 +1,20 @@
+import user.review.Reviewer
+
+import java.text.NumberFormat
+
+model {
+    Reviewer reviewer
+}
+
+json {
+    id reviewer?.id
+    name reviewer?.fullName
+    gender reviewer?.gender
+    city reviewer?.city
+    state reviewer?.state
+    //format date
+    first  reviewer?.dateOfFirstReview.format('yyyy-MM-dd h:mm a')
+    latest reviewer?.dateOfLatestReview.format('yyyy-MM-dd h:mm a')
+    total reviewer?.totalReviewCount
+}
+

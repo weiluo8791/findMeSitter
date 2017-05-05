@@ -37,11 +37,11 @@ class BootStrap {
         User admin = new User (username: 'admin',password: 'supersecret',firstName: 'Administrator',lastName: 'None')
         saveObject(admin)
 
-        user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas',city: 'Boston',state: 'MA')
+        user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas',city: 'Boston',state: 'MA',gender: 'M')
         saveObject(user1)
-        user2= new User (username: 'ljames',password: 'ljames',firstName: 'Lebron',lastName: 'James',city: 'Cleveland',state: 'OH')
+        user2= new User (username: 'ljames',password: 'ljames',firstName: 'Lebron',lastName: 'James',city: 'Cleveland',state: 'OH',gender: 'F',nickName: 'Queen James')
         saveObject(user2)
-        user3= new User (username: 'jwall',password: 'jwall',firstName: 'John',lastName: 'Wall',city: 'Washington D.C.',state: 'DC')
+        user3= new User (username: 'jwall',password: 'jwall',firstName: 'John',lastName: 'Wall',city: 'Washington D.C.',state: 'DC',gender: 'M')
         saveObject(user3)
 
         Role adminRole = new Role(authority: Role.ROLE_ADMIN)
@@ -59,16 +59,32 @@ class BootStrap {
 
     def setupData(){
         //load day care center
-        DayCareCenter dc1 = new DayCareCenter(name: 'Luo Family Day Care',address: '123 Main st',city: 'Malden',state: 'MA',zip: '02148',
+        DayCareCenter dc1 = new DayCareCenter(name: 'Luo Family Day Care',address: '123 Main St',city: 'Malden',state: 'MA',zip: '02148',
                 email: 'iqboss@mymail.com',phoneNumber: '123-456-7890',otherDetail:'None',centerCapcity: '8',dailyRate: 55.00)
         saveObject(dc1)
+        DayCareCenter dc2 = new DayCareCenter(name: 'Mei Family Day Care',address: '321 High St',city: 'Newton',state: 'MA',zip: '02465',
+                email: 'kidfirst@mymail.com',phoneNumber: '123-456-7890',otherDetail:'Including pre-school',centerCapcity: '20',dailyRate: 75.00)
+        saveObject(dc2)
+        DayCareCenter dc3 = new DayCareCenter(name: 'No Fun Family Day Care',address: '000 Boring St',city: 'Boston',state: 'MA',zip: '02111',
+                email: 'nofun@mymail.com',phoneNumber: '123-456-7890',otherDetail:'Please do not have any fun',centerCapcity: '999',dailyRate: 99.98)
+        saveObject(dc3)
+
         //load Day Center component
         Calendar ca1 = new Calendar(calendarYear: 2016,hours: 'M-F 7-6',center: dc1)
         saveObject(ca1)
+        Calendar ca2 = new Calendar(calendarYear: 2017,hours: 'M-F 7-7',center: dc1)
+        saveObject(ca2)
+        Calendar ca3 = new Calendar(calendarYear: 2017,hours: 'M-F 9-5',center: dc2)
+        saveObject(ca3)
         Feature fe1 = new Feature(featureName: 'Licensed',featureDescription: 'We are Mass Licensed',featureType: 'external',center: dc1)
         saveObject(fe1)
+        Feature fe2 = new Feature(featureName: 'Licensed',featureDescription: 'We are Mass Licensed',featureType: 'external',center: dc2)
+        saveObject(fe2)
+        Feature fe3= new Feature(featureName: 'Licensed',featureDescription: 'We are Mass Licensed',featureType: 'external',center: dc3)
+        saveObject(fe3)
         Picture pi1 = new Picture(pictureName: 'front door',pictureDescription: 'This is our main entry',imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/White_House_DC.JPG',center: dc1)
         saveObject(pi1)
+
         //load reviewer
         Reviewer re1 = new Reviewer(dateOfFirstReview: new Date() - 10 , dateOfLatestReview: new Date(),userDetail: user1)
         saveObject(re1)
@@ -76,6 +92,7 @@ class BootStrap {
         saveObject(re2)
         Reviewer re3 = new Reviewer(dateOfFirstReview: new Date() - 20 , dateOfLatestReview: new Date() - 2,userDetail: user3)
         saveObject(re3)
+
         //load review
         Review rv1 = new Review(dateOfReview: new Date() - 4 ,reviewTitle: 'I love this day care',reviewDetail: 'This is the best family day care in Malden',
             otherDetail: 'Very clean and professional',stars: 5,recommended: true,reviewer: re1,dayCareCenter: dc1)
@@ -86,6 +103,10 @@ class BootStrap {
         Review rv3 = new Review(dateOfReview: new Date() - 2,reviewTitle: 'I don\'t care',reviewDetail: 'This is ok',
                 otherDetail: 'meh',stars: 2,recommended: false,reviewer: re3,dayCareCenter: dc1)
         saveObject(rv3)
+        Review rv4 = new Review(dateOfReview: new Date() - 1,reviewTitle: 'I don\'t give a ****',reviewDetail: 'They lost my kid !!',
+                otherDetail: 'Police found my kid',stars: 0,recommended: false,reviewer: re1,dayCareCenter: dc3)
+        saveObject(rv4)
+
         //load review comment
         ReviewComment rc1 = new ReviewComment(comment: 'word',commentDate: new Date() - 2,published: true,review: rv1 )
         saveObject(rc1)

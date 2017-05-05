@@ -3,19 +3,20 @@ import daycare.provider.DayCareCenter
 import java.text.NumberFormat
 
 model {
-    DayCareCenter daycare
+    DayCareCenter dayCareCenter
 }
 
 json {
-    id daycare?.id
-    name daycare?.name
-    address daycare?.address
-    city daycare?.city
-    state daycare?.state
-    zip daycare?.zip
-    email daycare?.email
-    phone daycare?.phoneNumber
-    capacity daycare?.centerCapcity
-    rate NumberFormat.getCurrencyInstance().format(daycare?.dailyRate)
-    other daycare?.otherDetail
+    id dayCareCenter?.id
+    name dayCareCenter?.name
+    address dayCareCenter?.address
+    city dayCareCenter?.city
+    state dayCareCenter?.state
+    zip dayCareCenter?.zip
+    email dayCareCenter?.email
+    phone dayCareCenter?.phoneNumber
+    capacity dayCareCenter?.centerCapcity
+    //format to currency
+    rate NumberFormat.getCurrencyInstance().format(dayCareCenter?.dailyRate)
+    other dayCareCenter?.otherDetail
 }

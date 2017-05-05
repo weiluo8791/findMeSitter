@@ -3,8 +3,7 @@
     <thead>
     <tr>
         <th>Name</th>
-        <th>City</th>
-        <th>State</th>
+        <th>Location</th>
         <th>Last Review</th>
         <th>Total Review</th>
     </tr>
@@ -15,8 +14,7 @@
             <td>
                 <a href="#" data-reviewer-id="${reviewer.id}" data-toggle="modal" data-target="#reviewerModal">${reviewer.fullName}</a>
             </td>
-            <td>${reviewer.city}</td>
-            <td>${reviewer.state}</td>
+            <td>${reviewer.city}, ${reviewer.state}</td>
             <td>${reviewer.dateOfLatestReview}</td>
             <td>${reviewer.totalReviewCount}</td>
         </tr>
@@ -33,9 +31,9 @@
                 <h4 class="modal-title" id="reviewerModalLabel">Day Care Center</h4>
             </div>
             <div class="modal-body">
-                %{--<div id="reviewerModalContent">--}%
-                    %{--<g:render template="show" />--}%
-                %{--</div>--}%
+                <div id="reviewerModalContent">
+                    <g:render template="show" />
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
