@@ -1,5 +1,5 @@
 $(function() {
-    $('#reviewerModal').on('show.bs.modal', function (event) {
+    $('#reviewerModal').off().on('show.bs.modal', function (event) {
         console.log('reviewerModal fired!');
         var button = $(event.relatedTarget), // Button that triggered the modal
             reviewerId = button.data('reviewer-id'), // Extract info from data-* attributes

@@ -1,0 +1,14 @@
+import user.review.Review
+
+model {
+    Review review
+}
+
+json {
+    reviewId review?.id
+    reviewTitle review?.reviewTitle
+    reviewDetail review?.reviewDetail
+    reviewOtherDetail review?.otherDetail
+    reviewStars review?.stars
+    reviewIsRecommended (review?.recommended ? 'Yes' : 'No')
+}

@@ -49,6 +49,11 @@ class DayCareCenterController {
         }
     }
 
+    @Secured([Role.ROLE_USER,Role.ROLE_ADMIN,Role.ROLE_ANONYMOUS])
+    def _dayCareCenter(DayCareCenter dayCareCenter) {
+        respond dayCareCenter
+    }
+
     def create() {
         respond new DayCareCenter(params)
     }

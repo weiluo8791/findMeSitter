@@ -44,5 +44,6 @@
         </div>
     </div>
 </div>
+<asset:javascript src="daycarecenter/daycareTable.js"></asset:javascript>
 
 

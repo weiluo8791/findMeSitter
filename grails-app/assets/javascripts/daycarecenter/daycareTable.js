@@ -1,5 +1,5 @@
-$(function() {
-    $('#daycareModal').on('show.bs.modal', function (event) {
+$(function () {
+    $('#daycareModal').off().on('show.bs.modal', function (event) {
         console.log('daycareModal fired!');
         var button = $(event.relatedTarget), // Button that triggered the modal
             daycareId = button.data('daycare-id'), // Extract info from data-* attributes
@@ -17,6 +17,7 @@ $(function() {
             console.log(data);
             //$('#daycareModalContent').html(data); //used for handling HTML response
             // the following are used when calling for json and processing the individual data members
+
             $('#daycare-name').html(data.name);
             $('#daycare-address').html(data.address);
             $('#daycare-city').html(data.city);
@@ -28,11 +29,23 @@ $(function() {
             $('#daycare-rate').html(data.rate);
             $('#daycare-other').html(data.other);
 
-            $('#daycare-delete-form').attr('action','/dayCareCenter/delete/'+data.id);
-                $('#daycare-edit-link').attr('href','/dayCareCenter/edit/'+data.id);
+            if (data.reviews) {
+                var reviewList = $('<ul id="reviewList" style="list-style-type: none;"/>');
+                $.each(data.reviews, function(index, item) {
+                    reviewList.append('<li><a href="/review/show/'+item.reviewId+'">'+item.reviewTitle+'</a>' +
+                        ' Stars: ' + item.reviewStars + ' Recommended: '+ item.reviewIsRecommended + '</li>');
+                    reviewList.append('<li>Detail: ' +item.reviewDetail + '</li>');
+                    reviewList.append('<li>Other: ' +item.reviewOtherDetail + '</li>');
+                    reviewList.append('<br>');
+                });
+                $('#daycare-reviews').append(reviewList);
+            }
+
+            $('#daycare-delete-form').attr('action', '/dayCareCenter/delete/' + data.id);
+            $('#daycare-edit-link').attr('href', '/dayCareCenter/edit/' + data.id);
         });
         request.fail(function (jqXHR, textStatus) {
-            console.log("daycareModal fail - jqXHR="+jqXHR + ", textStatus="+textStatus);
+            console.log("daycareModal fail - jqXHR=" + jqXHR + ", textStatus=" + textStatus);
             $('#daycareModalContent').html('<p>Could not retrieve details for ' + daycareName + ' with id = ' + daycareId + '<p>');
         });
 

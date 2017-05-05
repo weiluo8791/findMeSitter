@@ -52,6 +52,10 @@
 
 </ol>
 
+
+
+        <div class="property-value" aria-labelledby="reviews-label" id="daycare-reviews"></div>
+
 <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_USER">
     <form id="daycare-delete-form" action="/dayCareCenter/delete/${daycare?.id}" method="post" >
         <input type="hidden" name="_method" value="DELETE" id="_method" />

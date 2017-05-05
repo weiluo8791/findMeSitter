@@ -19,4 +19,5 @@ json {
     //format to currency
     rate NumberFormat.getCurrencyInstance().format(dayCareCenter?.dailyRate)
     other dayCareCenter?.otherDetail
+    reviews  g.render(template: "reviewSimple", collection: dayCareCenter?.reviews ?: [], var: "reviews" )
 }
