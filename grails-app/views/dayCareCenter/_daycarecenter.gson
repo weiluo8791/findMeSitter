@@ -1,0 +1,21 @@
+import daycare.provider.DayCareCenter
+
+import java.text.NumberFormat
+
+model {
+    DayCareCenter daycare
+}
+
+json {
+    id daycare?.id
+    name daycare?.name
+    address daycare?.address
+    city daycare?.city
+    state daycare?.state
+    zip daycare?.zip
+    email daycare?.email
+    phone daycare?.phoneNumber
+    capacity daycare?.centerCapcity
+    rate NumberFormat.getCurrencyInstance().format(daycare?.dailyRate)
+    other daycare?.otherDetail
+}

@@ -1,42 +1,41 @@
 <asset:javascript src="application.js"></asset:javascript>
-<table id="dayCareTable" class="table  table-striped table-hover">
+<table id="reviewerTable" class="table  table-striped table-hover">
     <thead>
     <tr>
         <th>Name</th>
         <th>City</th>
         <th>State</th>
-        <th>Phone</th>
-        <th>Capcity</th>
+        <th>Last Review</th>
+        <th>Total Review</th>
     </tr>
     </thead>
     <tbody>
-    <g:each in="${dayCareCenterList}" var="daycare">
+    <g:each in="${reviewerList}" var="reviewer">
         <tr>
-            %{--<td>${daycare.name}</td>--}%
             <td>
-                <a href="#" data-daycare-id="${daycare.id}" data-toggle="modal" data-target="#daycareModal">${daycare.name}</a>
+                <a href="#" data-reviewer-id="${reviewer.id}" data-toggle="modal" data-target="#reviewerModal">${reviewer.fullName}</a>
             </td>
-            <td>${daycare.city}</td>
-            <td>${daycare.state}</td>
-            <td>${daycare.phoneNumber}</td>
-            <td>${daycare.centerCapcity}</td>
+            <td>${reviewer.city}</td>
+            <td>${reviewer.state}</td>
+            <td>${reviewer.dateOfLatestReview}</td>
+            <td>${reviewer.totalReviewCount}</td>
         </tr>
     </g:each>
     </tbody>
 </table>
 
 <!-- Modal -->
-<div class="modal fade" id="daycareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="reviewerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="daycareModalLabel">Day Care Center</h4>
+                <h4 class="modal-title" id="reviewerModalLabel">Day Care Center</h4>
             </div>
             <div class="modal-body">
-                <div id="daycareModalContent">
-                    <g:render template="show" />
-                </div>
+                %{--<div id="reviewerModalContent">--}%
+                    %{--<g:render template="show" />--}%
+                %{--</div>--}%
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

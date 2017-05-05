@@ -37,11 +37,11 @@ class BootStrap {
         User admin = new User (username: 'admin',password: 'supersecret',firstName: 'Administrator',lastName: 'None')
         saveObject(admin)
 
-        user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas' )
+        user1 = new User (username: 'ithomas',password: 'ithomas',firstName: 'Isaiah',lastName:'Thomas',city: 'Boston',state: 'MA')
         saveObject(user1)
-        user2= new User (username: 'ljames',password: 'ljames',firstName: 'Lebron',lastName: 'James')
+        user2= new User (username: 'ljames',password: 'ljames',firstName: 'Lebron',lastName: 'James',city: 'Cleveland',state: 'OH')
         saveObject(user2)
-        user3= new User (username: 'jwall',password: 'jwall',firstName: 'John',lastName: 'Wall')
+        user3= new User (username: 'jwall',password: 'jwall',firstName: 'John',lastName: 'Wall',city: 'Washington D.C.',state: 'DC')
         saveObject(user3)
 
         Role adminRole = new Role(authority: Role.ROLE_ADMIN)

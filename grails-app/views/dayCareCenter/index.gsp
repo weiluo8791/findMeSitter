@@ -24,12 +24,8 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    %{--<f:table collection="${dayCareCenterList}"/>--}%
     <g:render template="table" model="[dayCareCenterList:dayCareCenterList]" />
 
-    %{--<div class="pagination">--}%
-        %{--<g:paginate total="${dayCareCenterCount ?: 0}"/>--}%
-    %{--</div>--}%
 </div>
 <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script>
