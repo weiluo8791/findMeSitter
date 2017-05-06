@@ -16,5 +16,6 @@ json {
     first  reviewer?.dateOfFirstReview.format('yyyy-MM-dd h:mm a')
     latest reviewer?.dateOfLatestReview.format('yyyy-MM-dd h:mm a')
     total reviewer?.totalReviewCount
+    reviews  g.render(template: "reviewSimple", collection: reviewer?.reviews ?: [], var: "reviews" )
 }
 

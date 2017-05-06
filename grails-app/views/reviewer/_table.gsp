@@ -1,4 +1,6 @@
+<asset:stylesheet src="daycare.css"></asset:stylesheet>
 <asset:javascript src="application.js"></asset:javascript>
+
 <table id="reviewerTable" class="table  table-striped table-hover">
     <thead>
     <tr>
@@ -41,5 +43,5 @@
         </div>
     </div>
 </div>
-
+<asset:javascript src="reviewer/reviewerTable.js"></asset:javascript>
 

@@ -37,6 +37,8 @@
 
 </ol>
 
+<div class="property-value" aria-labelledby="reviews-label" id="reviewer-reviews"></div>
+
 <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_USER">
     <form id="reviewer-delete-form" action="/reviewer/delete/${reviewer?.id}" method="post" >
         <input type="hidden" name="_method" value="DELETE" id="_method" />
