@@ -53,4 +53,8 @@ $(function () {
         });
 
     });
+    $('#daycareModal').on('hidden.bs.modal', function () {
+        window.location.reload();
+    });
+
 });

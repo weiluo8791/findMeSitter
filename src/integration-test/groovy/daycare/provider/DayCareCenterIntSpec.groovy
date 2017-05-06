@@ -10,6 +10,6 @@ class DayCareCenterIntSpec extends Specification {
 
     void "test that there are 1 DayCareCenter in the db" () {
         expect:
-        DayCareCenter.count() == 1
+        DayCareCenter.count() == 3
     }
 }

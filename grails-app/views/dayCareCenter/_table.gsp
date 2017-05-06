@@ -1,5 +1,6 @@
-<asset:stylesheet src="daycare.css.css" />
+<asset:stylesheet src="daycare.css"></asset:stylesheet>
 <asset:javascript src="application.js"></asset:javascript>
+
 <table id="dayCareTable" class="table  table-striped table-hover">
     <thead>
     <tr>
@@ -8,6 +9,7 @@
         <th>State</th>
         <th>Phone</th>
         <th>Capcity</th>
+        <th>Rating</th>
     </tr>
     </thead>
     <tbody>
@@ -21,10 +23,17 @@
             <td>${daycare.state}</td>
             <td>${daycare.phoneNumber}</td>
             <td>${daycare.centerCapcity}</td>
+            <ratingAverage:daycarecenter daycarecenter="${daycare}"/>
         </tr>
     </g:each>
     </tbody>
 </table>
+<script>
+    $.fn.stars = function() {
+        return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*16));});
+    };
+    $('.stars').stars();
+</script>
 
 <!-- Modal -->
 <div class="modal fade" id="daycareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -46,5 +55,4 @@
     </div>
 </div>
 <asset:javascript src="daycarecenter/daycareTable.js"></asset:javascript>
-
 

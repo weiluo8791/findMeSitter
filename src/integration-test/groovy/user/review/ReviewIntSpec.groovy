@@ -11,6 +11,6 @@ class ReviewIntSpec extends Specification {
 
     void "test that there are 3 review in the db" () {
         expect:
-        Review.count() == 3
+        Review.count() == 4
     }
 }
