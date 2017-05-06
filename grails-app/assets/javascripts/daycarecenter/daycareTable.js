@@ -4,8 +4,10 @@ $(function () {
         var button = $(event.relatedTarget), // Button that triggered the modal
             daycareId = button.data('daycare-id'), // Extract info from data-* attributes
             daycareName = button.html();
-        console.log(daycareName);
         $('#daycareModalLabel').html(daycareName); // we already have the title, from the page itself, so just use it
+        $.fn.stars = function() {
+            return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*16));});
+        };
 
         var request = $.ajax({
             //url:'/dayCareCenter/_show/'+daycareId, // for HTML response
@@ -13,11 +15,9 @@ $(function () {
             method: 'GET'
         });
         request.done(function (data) {
-            console.log("daycareModal success");
-            console.log(data);
+            console.log("daycareModal ajax success");
             //$('#daycareModalContent').html(data); //used for handling HTML response
             // the following are used when calling for json and processing the individual data members
-
             $('#daycare-name').html(data.name);
             $('#daycare-address').html(data.address);
             $('#daycare-city').html(data.city);
@@ -32,13 +32,16 @@ $(function () {
             if (data.reviews) {
                 var reviewList = $('<ul id="reviewList" style="list-style-type: none;"/>');
                 $.each(data.reviews, function(index, item) {
-                    reviewList.append('<li><a href="/review/show/'+item.reviewId+'">'+item.reviewTitle+'</a>' +
-                        ' Stars: ' + item.reviewStars + ' Recommended: '+ item.reviewIsRecommended + '</li>');
+                    reviewList.append('<li><a href="/review/show/'+item.reviewId+'">'+item.reviewTitle+'</a>    ' +
+                        '<span class="stars">' + item.reviewStars  + '</span>' +
+                        (item.reviewIsRecommended ? '<img src="/assets/thumbsup.png" alt="thumbsup" height="16" width="16">' : '<img src="/assets/thumbsdown.png" alt="thumbsdown" height="16" width="16">') + '</li>   ');
+                        //' Recommended: '+ item.reviewIsRecommended + '</li>');
                     reviewList.append('<li>Detail: ' +item.reviewDetail + '</li>');
                     reviewList.append('<li>Other: ' +item.reviewOtherDetail + '</li>');
                     reviewList.append('<br>');
                 });
-                $('#daycare-reviews').append(reviewList);
+                $('#daycare-reviews').html(reviewList);
+                $('.stars').stars();
             }
 
             $('#daycare-delete-form').attr('action', '/dayCareCenter/delete/' + data.id);

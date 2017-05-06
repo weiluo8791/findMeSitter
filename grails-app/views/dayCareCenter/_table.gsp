@@ -1,3 +1,4 @@
+<asset:stylesheet src="daycare.css.css" />
 <asset:javascript src="application.js"></asset:javascript>
 <table id="dayCareTable" class="table  table-striped table-hover">
     <thead>

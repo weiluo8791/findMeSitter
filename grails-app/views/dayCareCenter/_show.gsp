@@ -52,16 +52,14 @@
 
 </ol>
 
-
-
-        <div class="property-value" aria-labelledby="reviews-label" id="daycare-reviews"></div>
+<div class="property-value" aria-labelledby="reviews-label" id="daycare-reviews"></div>
 
 <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_USER">
-    <form id="daycare-delete-form" action="/dayCareCenter/delete/${daycare?.id}" method="post" >
-        <input type="hidden" name="_method" value="DELETE" id="_method" />
+    <form id="daycare-delete-form" action="/dayCareCenter/delete/${daycare?.id}" method="post">
+        <input type="hidden" name="_method" value="DELETE" id="_method"/>
         <fieldset class="buttons">
             <a id="daycare-edit-link" href="/dayCareCenter/edit/${daycare?.id}" class="edit">Edit</a>
-            <input class="delete" type="submit" value="Delete" onclick="return confirm('Are you sure?');" />
+            <input class="delete" type="submit" value="Delete" onclick="return confirm('Are you sure?');"/>
         </fieldset>
     </form>
 </sec:ifAnyGranted>

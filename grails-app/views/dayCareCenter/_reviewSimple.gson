@@ -10,5 +10,5 @@ json {
     reviewDetail review?.reviewDetail
     reviewOtherDetail review?.otherDetail
     reviewStars review?.stars
-    reviewIsRecommended (review?.recommended ? 'Yes' : 'No')
+    reviewIsRecommended review?.recommended
 }
