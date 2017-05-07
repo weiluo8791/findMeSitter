@@ -7,10 +7,6 @@ class Picture {
     byte[] image
     String  getImageBase64() {image.encodeBase64().toString()}
 
-    static searchable = {
-        except = 'image'
-        center component:true
-    }
     static belongsTo = [center:DayCareCenter]
     static transients = ['imageBase64']
     static mapping = {

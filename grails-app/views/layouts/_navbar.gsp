@@ -15,22 +15,24 @@
                     <g:link controller="dayCareCenter">Day Care Center</g:link>
                 </li>
                 <li>
-                    <g:link controller="review">Reviews</g:link>
-                </li>
-                <li>
                     <g:link controller="reviewer">Reviewer</g:link>
                 </li>
-
+                <li>
+                    <g:link controller="review">Reviews</g:link>
+                </li>
 
                 <sec:ifLoggedIn>
                     <li>
                         <a>Logged in as <sec:username/></a>
                     </li>
                     <li><a>
-                        <g:form controller="logout" type="POST"><input class="btn btn-link" style="color: white !important;" type="submit" value="logout" /></g:form>
+                        <g:form controller="logout" type="POST">
+                            <input class="btn btn-link" style="color: white !important;" type="submit" value="logout" />
+                        </g:form>
                     </a>
                     </li>
                 </sec:ifLoggedIn>
+
                 <sec:ifNotLoggedIn>
                     <li>
                         <g:link controller="login" action="index">Login</g:link>

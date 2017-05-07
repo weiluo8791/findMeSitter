@@ -14,12 +14,13 @@ class DayCareCenter {
     Integer centerCapcity
     BigDecimal dailyRate
 
-    static searchable = true
+    static searchable = {
+        only = ['name','address','city','state','zip','otherDetail']
+    }
     static hasMany = [features:Feature,
                                 pictures:Picture,
                                 calendars:Calendar,
                                 reviews:Review]
-
     static constraints = {
         email nullable: true
         phoneNumber nullable: true, matches: '^\\d{3}-\\d{3}-\\d{4}$'

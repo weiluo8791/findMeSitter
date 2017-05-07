@@ -6,7 +6,7 @@ class ReviewComment {
     Boolean published
 
     static searchable = {
-        review component:true
+        only = 'comment'
     }
     static belongsTo = [review:Review]
     static constraints = {

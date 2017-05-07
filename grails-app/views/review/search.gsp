@@ -11,13 +11,8 @@
 <a href="#list-searchResult" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
 <div id="list-searchResult" class="content scaffold-list" role="main">
+    <h1>Search Result for "${query}"</h1>
     <g:render template="search"/>
-
-        %{--<g:each in="${searchResults}" var="result">--}%
-            %{--<g:set var="className" value="${org.springframework.util.ClassUtils.getShortName(result.class)}" />--}%
-            %{--<g:set var="link" value="${createLink(controller: className[0].toLowerCase() + className[1..-1], action: 'show', id: result.id)}" />--}%
-            %{--<li><a href="${link}">${className}: ${result.id}</a></li>--}%
-        %{--</g:each>--}%
 </div>
 </body>
 </html>

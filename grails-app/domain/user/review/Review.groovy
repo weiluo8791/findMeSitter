@@ -12,8 +12,7 @@ class Review {
     Integer stars
 
     static searchable = {
-        dayCareCenter component:true
-        reviewer component:true
+        only = ['reviewTitle','reviewDetail','otherDetail']
     }
     static belongsTo = [reviewer:Reviewer,dayCareCenter:DayCareCenter]
     static hasMany = [comments:ReviewComment]

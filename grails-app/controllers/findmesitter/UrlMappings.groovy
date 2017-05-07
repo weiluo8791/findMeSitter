@@ -12,8 +12,8 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
-        "/search-review"(view:'/review/main')
+        "/"(view:'/review/main')
+//        "/search-review"(view:'/review/main')
         "500"(view:'/error')
         "404"(view:'/notFound')
     }
