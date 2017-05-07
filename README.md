@@ -18,9 +18,9 @@ This project contains the following
 * Use UrlMappings for custom mapping to view and controller
 * Relation defined in all Domain classes including some transients properties
 * Use Bootstrap to initial data loading
-* Created custom Service (CalculateRatingAverageService)
-* Created custom Tablib (AverageRatingTabLib)
-* Use custom Template in View
+* Created custom Service for calculate average rating by daycare (CalculateRatingAverageService)
+* Created custom Tablib to display rating with star rating (AverageRatingTabLib)
+* Use and render custom Template in View
 * Use JQuery DataTable , use custom jquery code to render star image for rating
 * User JQuery ajax for POST and GET (dayCareTable.js and reviewerTable.js)
 * User GSON for Json response from ajax
