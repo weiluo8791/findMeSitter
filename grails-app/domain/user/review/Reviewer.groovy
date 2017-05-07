@@ -18,6 +18,10 @@ class Reviewer {
         this.reviews.size()
     }
 
+    static searchable = {
+        except = ['dateCreated','lastUpdated']
+        userDetail component:true
+    }
     static transients = ['totalReviewCount','gender','state','city','fullName']
     static hasMany = [reviews: Review]
     static constraints = {

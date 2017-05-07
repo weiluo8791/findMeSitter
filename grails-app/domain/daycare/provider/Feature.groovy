@@ -4,6 +4,10 @@ class Feature {
     String featureName
     String featureType
     String featureDescription
+
+    static searchable = {
+        center component:true
+    }
     static belongsTo = [center:DayCareCenter]
     static constraints = {
         featureDescription nullable: true

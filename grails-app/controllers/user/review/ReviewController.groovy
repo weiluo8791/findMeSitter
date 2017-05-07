@@ -14,7 +14,13 @@ class ReviewController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    SearchReviewService searchReviewService
+    def elasticSearchService
+
+    @Secured([Role.ROLE_USER,Role.ROLE_ADMIN,Role.ROLE_ANONYMOUS])
+    def search() {
+        def result = elasticSearchService.search("${params.query}")
+        [query:params.query, total:result.total, searchResults:result.searchResults]
+    }
 
     @Secured([Role.ROLE_USER,Role.ROLE_ADMIN,Role.ROLE_ANONYMOUS])
     def index(Integer max) {

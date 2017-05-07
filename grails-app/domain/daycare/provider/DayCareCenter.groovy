@@ -14,6 +14,7 @@ class DayCareCenter {
     Integer centerCapcity
     BigDecimal dailyRate
 
+    static searchable = true
     static hasMany = [features:Feature,
                                 pictures:Picture,
                                 calendars:Calendar,

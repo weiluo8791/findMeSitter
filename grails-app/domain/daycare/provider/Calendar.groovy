@@ -5,6 +5,9 @@ class Calendar {
     String hours
     String holidays
 
+    static searchable = {
+        center component:true
+    }
     static belongsTo = [center:DayCareCenter]
     static constraints = {
         calendarYear min: 1997

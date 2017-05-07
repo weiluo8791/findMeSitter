@@ -1,5 +1,8 @@
 package findmesitter
 
+import findMeSitter.user.Role
+import grails.plugin.springsecurity.annotation.Secured
+
 class UrlMappings {
 
     static mappings = {
@@ -10,8 +13,7 @@ class UrlMappings {
         }
 
         "/"(view:"/index")
-//        "/dcc"(controller: "dayCareCenter", action: "index")
-//        "/dccreviewer"(controller: "reviewer", action: "index")
+        "/search-review"(view:'/review/main')
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

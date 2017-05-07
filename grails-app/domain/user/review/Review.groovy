@@ -11,6 +11,10 @@ class Review {
     String otherDetail
     Integer stars
 
+    static searchable = {
+        dayCareCenter component:true
+        reviewer component:true
+    }
     static belongsTo = [reviewer:Reviewer,dayCareCenter:DayCareCenter]
     static hasMany = [comments:ReviewComment]
     static constraints = {
