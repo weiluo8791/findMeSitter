@@ -123,6 +123,25 @@ environments:
         dataSource:
             dbCreate: update
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+        elasticSearch:
+                    client:
+                        mode: local
+                        transport.sniff: true
+                    datastoreImpl: hibernateDatastore
+                    index:
+                        store.type: simplefs
+                        analysis:
+                            filter:
+                                replace_synonyms:
+                                    type: synonym
+                                    synonyms: ['abc => xyz']
+                            analyzer:
+                                test_analyzer:
+                                    tokenizer: standard
+                                    filter: ['lowercase']
+                                repl_analyzer:
+                                    tokenizer: standard
+                                    filter: ['lowercase', 'replace_synonyms']
     production:
         dataSource:
             dbCreate: none
