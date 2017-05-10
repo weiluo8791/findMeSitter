@@ -106,6 +106,9 @@ class BootStrap {
         Review rv4 = new Review(dateOfReview: new Date() - 1,reviewTitle: 'I don\'t give a ****',reviewDetail: 'They lost my kid !!',
                 otherDetail: 'Police found my kid',stars: 0,recommended: false,reviewer: re1,dayCareCenter: dc3)
         saveObject(rv4)
+        Review rv5 = new Review(dateOfReview: new Date() - 5,reviewTitle: 'Highly recommended',reviewDetail: 'My daughter and son loved this place. All the teacher so nice and at a very reason rate',
+                otherDetail: 'I wish they can  take my kids at night too ! ',stars: 5,recommended: true,reviewer: re2,dayCareCenter: dc2)
+        saveObject(rv5)
 
         //load review comment
         ReviewComment rc1 = new ReviewComment(comment: 'word',commentDate: new Date() - 2,published: true,review: rv1 )
